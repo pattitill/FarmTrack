@@ -17,7 +17,7 @@ namespace FarmTrack.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -30,19 +30,58 @@ namespace FarmTrack.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("HarvestDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PlantingDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Crops");
+                });
+
+            modelBuilder.Entity("FarmTrack.Models.RealCrop", b =>
+                {
+                    b.Property<int>("RealCropId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RealCropId"));
+
+                    b.Property<int>("CropId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ExpectedHarvestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("HarvestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PlantingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("QuantityHarvested")
+                        .HasColumnType("int");
+
+                    b.HasKey("RealCropId");
+
+                    b.HasIndex("CropId");
+
+                    b.ToTable("RealCrops");
+                });
+
+            modelBuilder.Entity("FarmTrack.Models.RealCrop", b =>
+                {
+                    b.HasOne("FarmTrack.Models.Crop", "Crop")
+                        .WithMany()
+                        .HasForeignKey("CropId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Crop");
                 });
 #pragma warning restore 612, 618
         }

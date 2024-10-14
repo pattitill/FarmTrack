@@ -5,13 +5,9 @@ namespace FarmTrack.Data
 {
     public class FarmTrackContext : DbContext
     {
-        public FarmTrackContext(DbContextOptions<FarmTrackContext> options)
-            : base(options)
-        {
-        }
+        public FarmTrackContext(DbContextOptions<FarmTrackContext> options) : base(options) { }
 
-        public DbSet<Crop> Crops { get; set; }  // Ersetze Crop durch deine Datenmodellklasse
-        
-        // Füge hier weitere DbSets für andere Modelle hinzu
+        public DbSet<Crop> Crops { get; set; }
+        public DbSet<RealCrop> RealCrops { get; set; }
     }
 }
