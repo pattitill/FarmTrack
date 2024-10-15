@@ -1,0 +1,22 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.background {
+    background-image: url('https://imgur.com/bH1HOys.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+    .background h1, .background p {
+        margin: 0;
+        padding-top: 20px; /* Adjust this to move the text further down if needed */
+    }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qsanylafrNL4IquRuAmxw6Z3od2JwZZzX1gRCIfc1a4=",
+  "Hash": "CREEUC0OzuIUOOCGZPLnNYQqm5GfQAFLUenU/qbciEw=",
   "Source": "FarmTrack",
   "BasePath": "_content/FarmTrack",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\wwwroot\\css\\styles.css",
+      "SourceId": "FarmTrack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\wwwroot\\",
+      "BasePath": "_content/FarmTrack",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\wwwroot\\favicon.ico",
