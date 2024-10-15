@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Füge den DbContext und die Verbindung zur SQL-Datenbank hinzu
+// Füge den DbContext und die Verbindung zur SQLite-Datenbank hinzu
 builder.Services.AddDbContext<FarmTrackContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));  // Verwende UseSqlite statt UseSqlServer
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
