@@ -1,4 +1,4 @@
-﻿@model FarmTrack.Models.Crop
+@model FarmTrack.Models.Crop
 
 @{
     ViewData["Title"] = "Delete";
@@ -22,6 +22,24 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TemperatureThreshold)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TemperatureThreshold)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Month)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Month)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Duration)
         </dd>
     </dl>
     

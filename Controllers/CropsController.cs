@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,7 +54,7 @@ namespace FarmTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Type")] Crop crop)
+        public async Task<IActionResult> Create([Bind("Id,Name,Type,TemperatureThreshold,Month,Duration")] Crop crop)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace FarmTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type")] Crop crop)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type,TemperatureThreshold,Month,Duration")] Crop crop)
         {
             if (id != crop.Id)
             {

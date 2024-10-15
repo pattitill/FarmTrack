@@ -23,9 +23,23 @@ namespace FarmTrack.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("TemperatureThreshold")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -34,45 +48,29 @@ namespace FarmTrack.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Crops");
+
+                    b.HasDiscriminator().HasValue("Crop");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("FarmTrack.Models.RealCrop", b =>
                 {
-                    b.Property<int>("RealCropId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.HasBaseType("FarmTrack.Models.Crop");
 
-                    b.Property<int>("CropId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("ExpectedHarvestDate")
+                    b.Property<DateTime?>("ActualHarvestDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("HarvestDate")
+                    b.Property<double>("Amount")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime>("ExpectedHarvestDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("PlantingDate")
+                    b.Property<DateTime>("Planting")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("QuantityHarvested")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("RealCropId");
-
-                    b.HasIndex("CropId");
-
-                    b.ToTable("RealCrops");
-                });
-
-            modelBuilder.Entity("FarmTrack.Models.RealCrop", b =>
-                {
-                    b.HasOne("FarmTrack.Models.Crop", "Crop")
-                        .WithMany()
-                        .HasForeignKey("CropId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Crop");
+                    b.HasDiscriminator().HasValue("RealCrop");
                 });
 #pragma warning restore 612, 618
         }
