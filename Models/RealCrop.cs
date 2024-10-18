@@ -1,44 +1,39 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FarmTrack.Models
 {
-    public class RealCrop : Crop
+    public class RealCrop
     {
-        // The date the crop was planted
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public int CropId { get; set; }
+
+        [ForeignKey("CropId")]
+        public Crop Crop { get; set; }
+
+        [Required]
         public DateTime Planting { get; set; }
 
-        // The expected harvest date
         public DateTime ExpectedHarvestDate { get; set; }
 
-        // The actual date the crop was harvested
-        public DateTime? ActualHarvestDate { get; set; } // Nullable to handle cases where it hasn't been harvested yet
+        public DateTime? ActualHarvestDate { get; set; } // Nullable, because the crop may not have been harvested yet
 
-        // The amount of crop harvested
-        public double Amount { get; set; }
+        public double? Amount { get; set; } // Nullable, because the crop may not be harvested yet
 
-        // Parameterless constructor
+        // Parameterless constructor for framework/model binding
         public RealCrop() { }
 
-        // Constructor that includes the base crop attributes and new ones
-        public RealCrop(string name, string description, double temperatureThreshold, int month, int duration,
-                        DateTime planting, double amount) : base(name, description, temperatureThreshold, month, duration)
+        // Constructor to initialize and calculate ExpectedHarvestDate
+        public RealCrop(int cropId, DateTime planting, int duration)
         {
+            CropId = cropId;
             Planting = planting;
-            ExpectedHarvestDate = Planting.AddDays(duration); // Automatically set based on duration
-            Amount = amount;
-        }
-
-        // Method to update the actual harvest date
-        public void SetActualHarvestDate(DateTime harvestDate)
-        {
-            ActualHarvestDate = harvestDate;
-        }
-
-        // Override method to display more detailed crop info
-        public override void DisplayInfo()
-        {
-            base.DisplayInfo(); // Call the base class method
-            Console.WriteLine($"Planting Date: {Planting.ToShortDateString()}, Expected Harvest: {ExpectedHarvestDate.ToShortDateString()}, Actual Harvest: {(ActualHarvestDate.HasValue ? ActualHarvestDate.Value.ToShortDateString() : "Not harvested yet")}, Amount: {Amount} units");
+            ExpectedHarvestDate = planting.AddDays(duration); // Calculate based on planting date and crop's duration
         }
     }
+
 }
