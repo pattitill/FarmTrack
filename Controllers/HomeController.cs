@@ -1,31 +1,60 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FarmTrack.Models;
+using Microsoft.AspNetCore.Mvc;
+using FarmTrack.Models;
 
-namespace FarmTrack.Controllers;
-
-public class HomeController : Controller
+namespace FarmTrack.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly ILogger<HomeController> _logger;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        // GET: Privacy page that requires password every time
+        public IActionResult Privacy()
+        {
+            return RedirectToAction("PrivacyPassword");
+        }
+
+        // GET: Password entry form
+        public IActionResult PrivacyPassword()
+        {
+            return View();
+        }
+
+        // POST: Handle password submission
+        [HttpPost]
+        public IActionResult PrivacyPassword(string password)
+        {
+            const string requiredPassword = "123"; // Hardcoded password
+
+            if (password == requiredPassword)
+            {
+                // Redirect to the actual Privacy view if password is correct
+                return RedirectToAction("ShowPrivacy");
+            }
+            else
+            {
+                // Show error message if the password is incorrect
+                ViewBag.Error = "Incorrect password. Please try again.";
+                return View();
+            }
+        }
+
+        // GET: The actual Privacy page content (shown only after correct password)
+        public IActionResult ShowPrivacy()
+        {
+            return View("Privacy");
+        }
     }
 }
