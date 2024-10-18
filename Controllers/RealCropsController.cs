@@ -10,22 +10,23 @@ using FarmTrack.Models;
 
 namespace FarmTrack.Controllers
 {
-    public class CropsController : Controller
+    public class RealCropsController : Controller
     {
         private readonly FarmTrackContext _context;
 
-        public CropsController(FarmTrackContext context)
+        public RealCropsController(FarmTrackContext context)
         {
             _context = context;
         }
 
-        // GET: Crops
+        // GET: RealCrops
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Crops.ToListAsync());
+            var farmTrackContext = _context.RealCrops.Include(r => r.Crop);
+            return View(await farmTrackContext.ToListAsync());
         }
 
-        // GET: Crops/Details/5
+        // GET: RealCrops/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace FarmTrack.Controllers
                 return NotFound();
             }
 
-            var crop = await _context.Crops
+            var realCrop = await _context.RealCrops
+                .Include(r => r.Crop)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (crop == null)
+            if (realCrop == null)
             {
                 return NotFound();
             }
 
-            return View(crop);
+            return View(realCrop);
         }
 
-        // GET: Crops/Create
+        // GET: RealCrops/Create
         public IActionResult Create()
         {
+            // Populate the dropdown with available crops
+            ViewData["CropId"] = new SelectList(_context.Crops, "Id", "Name");
             return View();
         }
 
-        // POST: Crops/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: RealCrops/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Type,TemperatureThreshold,Month,Duration")] Crop crop)
+        public async Task<IActionResult> Create([Bind("Id,CropId,Planting,ExpectedHarvestDate,ActualHarvestDate,Amount")] RealCrop realCrop)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(crop);
+                _context.Add(realCrop);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(crop);
+            // Re-populate the dropdown in case the model state is invalid
+            ViewData["CropId"] = new SelectList(_context.Crops, "Id", "Name", realCrop.CropId);
+            return View(realCrop);
         }
 
-        // GET: Crops/Edit/5
+        // GET: RealCrops/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,22 @@ namespace FarmTrack.Controllers
                 return NotFound();
             }
 
-            var crop = await _context.Crops.FindAsync(id);
-            if (crop == null)
+            var realCrop = await _context.RealCrops.FindAsync(id);
+            if (realCrop == null)
             {
                 return NotFound();
             }
-            return View(crop);
+            // Populate the dropdown for editing
+            ViewData["CropId"] = new SelectList(_context.Crops, "Id", "Name", realCrop.CropId);
+            return View(realCrop);
         }
 
-        // POST: Crops/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: RealCrops/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type,TemperatureThreshold,Month,Duration")] Crop crop)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CropId,Planting,ExpectedHarvestDate,ActualHarvestDate,Amount")] RealCrop realCrop)
         {
-            if (id != crop.Id)
+            if (id != realCrop.Id)
             {
                 return NotFound();
             }
@@ -97,12 +101,12 @@ namespace FarmTrack.Controllers
             {
                 try
                 {
-                    _context.Update(crop);
+                    _context.Update(realCrop);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CropExists(crop.Id))
+                    if (!RealCropExists(realCrop.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +117,12 @@ namespace FarmTrack.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(crop);
+            // Re-populate the dropdown in case the model state is invalid
+            ViewData["CropId"] = new SelectList(_context.Crops, "Id", "Name", realCrop.CropId);
+            return View(realCrop);
         }
 
-        // GET: Crops/Delete/5
+        // GET: RealCrops/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +130,35 @@ namespace FarmTrack.Controllers
                 return NotFound();
             }
 
-            var crop = await _context.Crops
+            var realCrop = await _context.RealCrops
+                .Include(r => r.Crop)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (crop == null)
+            if (realCrop == null)
             {
                 return NotFound();
             }
 
-            return View(crop);
+            return View(realCrop);
         }
 
-        // POST: Crops/Delete/5
+        // POST: RealCrops/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var crop = await _context.Crops.FindAsync(id);
-            if (crop != null)
+            var realCrop = await _context.RealCrops.FindAsync(id);
+            if (realCrop != null)
             {
-                _context.Crops.Remove(crop);
+                _context.RealCrops.Remove(realCrop);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CropExists(int id)
+        private bool RealCropExists(int id)
         {
-            return _context.Crops.Any(e => e.Id == id);
+            return _context.RealCrops.Any(e => e.Id == id);
         }
     }
 }

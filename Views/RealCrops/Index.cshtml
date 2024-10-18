@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FarmTrack.Models.Crop>
+﻿@model IEnumerable<FarmTrack.Models.RealCrop>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Crop)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.Planting)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TemperatureThreshold)
+                @Html.DisplayNameFor(model => model.ExpectedHarvestDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Month)
+                @Html.DisplayNameFor(model => model.ActualHarvestDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duration)
+                @Html.DisplayNameFor(model => model.Amount)
             </th>
             <th></th>
         </tr>
@@ -34,19 +34,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Crop.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @Html.DisplayFor(modelItem => item.Planting)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TemperatureThreshold)
+                @Html.DisplayFor(modelItem => item.ExpectedHarvestDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Month)
+                @Html.DisplayFor(modelItem => item.ActualHarvestDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duration)
+                @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

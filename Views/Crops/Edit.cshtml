@@ -1,4 +1,4 @@
-@model FarmTrack.Models.Crop
+﻿@model FarmTrack.Models.Crop
 
 @{
     ViewData["Title"] = "Edit";
@@ -49,3 +49,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
