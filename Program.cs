@@ -1,22 +1,26 @@
-using FarmTrack.Data;  // Namespace für deinen DbContext
+using FarmTrack.Data;  // Namespace for your DbContext
+using FarmTrack.Services;  // Namespace for your WeatherService
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Füge den DbContext und die Verbindung zur SQLite-Datenbank hinzu
+// Add DbContext and the connection to the SQLite database
 builder.Services.AddDbContext<FarmTrackContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));  // Verwende UseSqlite statt UseSqlServer
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));  // Use SQLite instead of SQL Server
 
-// Add services to the container.
+// Add WeatherService with HttpClient to enable external API calls
+builder.Services.AddHttpClient<WeatherService>();
+
+// Add services to the container
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios.
+    app.UseHsts();  // The default HSTS value is 30 days. You may want to change this for production scenarios.
 }
 
 app.UseHttpsRedirection();
@@ -24,11 +28,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Authentication & Authorization Middleware (Optional falls wir Authentifizierung hinzufügen möchten)
+// Authentication & Authorization Middleware (optional if you plan to add authentication)
 // app.UseAuthentication();
 app.UseAuthorization();
 
-// Endpunkt für die MVC-Routen
+// MVC route configuration
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

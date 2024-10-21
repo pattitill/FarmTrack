@@ -1,0 +1,20 @@
+﻿@model FarmTrack.Models.CropPlantingViewModel
+
+<h2>Optimal Planting Date Calculation</h2>
+
+<div>
+    <p><strong>Growth Duration (Days):</strong> @Model.GrowthDurationInDays</p>
+    <p><strong>Preferred Temperature (°C):</strong> @Model.PreferredTemperature</p>
+
+    @if (Model.OptimalPlantingDate.HasValue)
+    {
+        <p><strong>Optimal Planting Date:</strong> @Model.OptimalPlantingDate.Value.ToString("dd MMM yyyy")</p>
+    }
+    else
+    {
+        <p>Could not calculate optimal planting date. Please try again.</p>
+    }
+</div>
+
+<a href="/Planting/AddPlantingDetails" class="btn btn-primary">Try Again</a>
+
