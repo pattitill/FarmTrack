@@ -11,38 +11,74 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.CropName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.CropName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.CropType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => model.CropType)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TemperatureThreshold)
+            @Html.DisplayNameFor(model => model.PlantingDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TemperatureThreshold)
+            @Html.DisplayFor(model => model.PlantingDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Month)
+            @Html.DisplayNameFor(model => model.GrowthDurationInDays)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Month)
+            @Html.DisplayFor(model => model.GrowthDurationInDays)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Duration)
+            @Html.DisplayNameFor(model => model.ExpectedHarvestDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duration)
+            @Html.DisplayFor(model => model.ExpectedHarvestDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RequiresFertilizing)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RequiresFertilizing)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FertilizingReminder)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FertilizingReminder)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RequiresWatering)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RequiresWatering)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WateringReminder)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WateringReminder)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RequiresPestControl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RequiresPestControl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PestControlReminder)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PestControlReminder)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.CropId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

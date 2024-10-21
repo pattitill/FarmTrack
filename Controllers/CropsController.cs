@@ -34,7 +34,7 @@ namespace FarmTrack.Controllers
             }
 
             var crop = await _context.Crops
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CropId == id);
             if (crop == null)
             {
                 return NotFound();
@@ -54,10 +54,11 @@ namespace FarmTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Type,TemperatureThreshold,Month,Duration")] Crop crop)
+        public async Task<IActionResult> Create([Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate,RequiresFertilizing,FertilizingReminder,RequiresWatering,WateringReminder,RequiresPestControl,PestControlReminder")] Crop crop)
         {
             if (ModelState.IsValid)
             {
+                crop.CalculateHarvestDate();
                 _context.Add(crop);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,9 +87,9 @@ namespace FarmTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Type,TemperatureThreshold,Month,Duration")] Crop crop)
+        public async Task<IActionResult> Edit(int id, [Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate,RequiresFertilizing,FertilizingReminder,RequiresWatering,WateringReminder,RequiresPestControl,PestControlReminder")] Crop crop)
         {
-            if (id != crop.Id)
+            if (id != crop.CropId)
             {
                 return NotFound();
             }
@@ -102,7 +103,7 @@ namespace FarmTrack.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CropExists(crop.Id))
+                    if (!CropExists(crop.CropId))
                     {
                         return NotFound();
                     }
@@ -125,7 +126,7 @@ namespace FarmTrack.Controllers
             }
 
             var crop = await _context.Crops
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CropId == id);
             if (crop == null)
             {
                 return NotFound();
@@ -151,7 +152,7 @@ namespace FarmTrack.Controllers
 
         private bool CropExists(int id)
         {
-            return _context.Crops.Any(e => e.Id == id);
+            return _context.Crops.Any(e => e.CropId == id);
         }
     }
 }

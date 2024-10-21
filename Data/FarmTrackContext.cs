@@ -8,6 +8,5 @@ namespace FarmTrack.Data
         public FarmTrackContext(DbContextOptions<FarmTrackContext> options) : base(options) { }
 
         public DbSet<Crop> Crops { get; set; }
-        public DbSet<RealCrop> RealCrops { get; set; }
     }
 }

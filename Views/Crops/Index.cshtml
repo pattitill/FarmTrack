@@ -13,19 +13,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.CropName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.CropType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TemperatureThreshold)
+                @Html.DisplayNameFor(model => model.PlantingDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Month)
+                @Html.DisplayNameFor(model => model.GrowthDurationInDays)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duration)
+                @Html.DisplayNameFor(model => model.ExpectedHarvestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiresFertilizing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FertilizingReminder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiresWatering)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WateringReminder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiresPestControl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PestControlReminder)
             </th>
             <th></th>
         </tr>
@@ -34,24 +52,42 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.CropName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @Html.DisplayFor(modelItem => item.CropType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TemperatureThreshold)
+                @Html.DisplayFor(modelItem => item.PlantingDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Month)
+                @Html.DisplayFor(modelItem => item.GrowthDurationInDays)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duration)
+                @Html.DisplayFor(modelItem => item.ExpectedHarvestDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.RequiresFertilizing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FertilizingReminder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequiresWatering)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WateringReminder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequiresPestControl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PestControlReminder)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CropId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CropId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CropId">Delete</a>
             </td>
         </tr>
 }
