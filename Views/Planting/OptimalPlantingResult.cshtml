@@ -1,11 +1,11 @@
-﻿@model FarmTrack.Models.CropPlantingViewModel
+﻿@model FarmTrack.Models.OptimalPlanting
 
 <h2>Optimal Planting Date Calculation</h2>
 
 <div>
     <p><strong>Growth Duration (Days):</strong> @Model.GrowthDurationInDays</p>
     <p><strong>Preferred Temperature (°C):</strong> @Model.PreferredTemperature</p>
-
+    <p><strong>Location:</strong> @Model.Location</p> <!-- Displaying the location -->
     @if (Model.OptimalPlantingDate.HasValue)
     {
         <p><strong>Optimal Planting Date:</strong> @Model.OptimalPlantingDate.Value.ToString("dd MMM yyyy")</p>
@@ -17,4 +17,3 @@
 </div>
 
 <a href="/Planting/AddPlantingDetails" class="btn btn-primary">Try Again</a>
-

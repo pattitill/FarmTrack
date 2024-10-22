@@ -10,6 +10,7 @@ builder.Services.AddDbContext<FarmTrackContext>(options =>
 
 // Add WeatherService with HttpClient to enable external API calls
 builder.Services.AddHttpClient<WeatherService>();
+builder.Services.AddSingleton<WeatherService>();
 
 // Add services to the container
 builder.Services.AddControllersWithViews();

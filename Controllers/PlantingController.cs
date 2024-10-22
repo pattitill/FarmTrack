@@ -15,41 +15,48 @@ namespace FarmTrack.Controllers
             _weatherService = weatherService;
         }
 
+        // GET: Display the form to add planting details
         [HttpGet]
         public IActionResult AddPlantingDetails()
         {
             return View();
         }
 
+        // POST: Calculate optimal planting date based on user input and weather data
         [HttpPost]
-        public async Task<IActionResult> AddPlantingDetails(CropPlantingViewModel model)
+        public async Task<IActionResult> AddPlantingDetails(OptimalPlanting model)
         {
             if (ModelState.IsValid)
             {
-                string location = "YourLocation";  // You can make this dynamic as well (user-input)
+                // Retrieve the location from the user input (model)
+                string location = model.Location;
+
+                // Call the WeatherService to get the current temperature for the location
                 double? currentTemperature = await _weatherService.GetTemperatureAsync(location);
 
                 if (currentTemperature.HasValue)
                 {
-                    // Check if current temperature is close to the preferred temperature
-                    if (Math.Abs(currentTemperature.Value - model.PreferredTemperature) <= 2)  // +/- 2 degrees tolerance
+                    // If current temperature is within 2 degrees of the preferred temperature, set planting to now
+                    if (Math.Abs(currentTemperature.Value - model.PreferredTemperature) <= 2)
                     {
                         model.OptimalPlantingDate = DateTime.Now;
                     }
                     else
                     {
-                        model.OptimalPlantingDate = DateTime.Now.AddDays(7);  // Default to 7 days in the future
+                        // Otherwise, suggest a planting date 7 days later
+                        model.OptimalPlantingDate = DateTime.Now.AddDays(7);
                     }
 
+                    // Return the result to a view that shows the optimal planting date
                     return View("OptimalPlantingResult", model);
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Unable to retrieve weather data. Please try again.");
+                    // Handle case where weather data could not be retrieved
+                    ModelState.AddModelError("", "Unable to retrieve weather data. Please check the location and try again.");
                 }
             }
             return View(model);
         }
     }
 }
-
