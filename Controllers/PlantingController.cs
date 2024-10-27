@@ -66,9 +66,11 @@ namespace FarmTrack.Controllers
                 .Select(c => new 
                 {
                     c.CropName,
-                    c.CropType, // Added CropType
+                    c.CropType,
                     c.PlantingDate,
-                    c.ExpectedHarvestDate,
+                    ExpectedHarvestDate = c.ExpectedHarvestDate.HasValue
+                        ? c.ExpectedHarvestDate.Value.ToString("yyyy-MM-dd")
+                        : c.PlantingDate.AddDays(c.GrowthDurationInDays).ToString("yyyy-MM-dd"),  // Calculate if null
                     ActualGrowthTime = c.HarvestDate.HasValue 
                         ? (c.HarvestDate.Value - c.PlantingDate).TotalDays.ToString("0") + " days"
                         : "N/A",

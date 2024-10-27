@@ -1,16 +1,8 @@
-@model IEnumerable<dynamic>
-
-@{
-    ViewData["Title"] = "Harvested Crop History";
-}
-
-<h2>@ViewData["Title"]</h2>
-
 <table class="table">
     <thead>
     <tr>
         <th>Crop Name</th>
-        <th>Crop Type</th> <!-- Added Crop Type column -->
+        <th>Crop Type</th>
         <th>Planting Date</th>
         <th>Expected Harvest Date</th>
         <th>Actual Growth Time</th>
@@ -22,9 +14,9 @@
     {
         <tr>
             <td>@crop.CropName</td>
-            <td>@crop.CropType</td> <!-- Display Crop Type here -->
+            <td>@crop.CropType</td>
             <td>@crop.PlantingDate.ToString("yyyy-MM-dd")</td>
-            <td>@crop.ExpectedHarvestDate?.ToString("yyyy-MM-dd") ?? "N/A"</td>
+            <td>@crop.ExpectedHarvestDate</td> <!-- Now ExpectedHarvestDate will display calculated date or saved date -->
             <td>@crop.ActualGrowthTime</td>
             <td>@crop.ActualHarvestDate</td>
         </tr>

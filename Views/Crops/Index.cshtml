@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FarmTrack.Models.Crop>
+﻿@model IEnumerable<FarmTrack.ViewModels.CropViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,65 +11,113 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Harvested)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CropName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CropType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlantingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GrowthDurationInDays)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpectedHarvestDate)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Harvested)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CropName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CropType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlantingDate)
+        </th>
+        <th>
+            Time Until Harvest <!-- Changed Header for the Timer -->
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedHarvestDate)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Where(c => !c.Harvested)) {
+    @foreach (var item in Model)
+    {
         <tr>
-                <td>
-                    @if (item.Harvested)
-                    {
-                        <span>Harvested</span>
-                    }
-                    else
-                    {
-                        <form asp-action="Harvest" method="post">
-                            <input type="hidden" name="id" value="@item.CropId" />
-                            <button type="submit" class="btn btn-primary">Harvest</button>
-                        </form>
-                    }
-                </td>
+            <td>
+                @if (item.Harvested)
+                {
+                    <span>Harvested</span>
+                }
+                else
+                {
+                    <form asp-action="Harvest" method="post">
+                        <input type="hidden" name="id" value="@item.CropId" />
+                        <button type="submit" class="btn btn-primary">Harvest</button>
+                    </form>
+                }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CropName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CropType)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlantingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GrowthDurationInDays)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpectedHarvestDate)
-            </td>
+
+            <!-- Planting Date formatted to display only date -->
+            <td>@item.PlantingDate.ToString("yyyy-MM-dd")</td>
+
+            <!-- Countdown timer cell -->
+            <td id="timer-@item.CropId" data-seconds="@item.SecondsUntilHarvest">Loading...</td>
+
+            <!-- Expected Harvest Date formatted to display only date -->
+            <td>@item.ExpectedHarvestDate?.ToString("yyyy-MM-dd")</td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CropId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CropId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.CropId">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
+
+@section Scripts {
+<script>
+    // Function to start countdown for each timer
+    function startCountdown(elementId, seconds) {
+        var timerElement = document.getElementById(elementId);
+        if (!timerElement) return;
+
+        // Function to calculate and display time
+        function updateCountdown() {
+            if (seconds <= 0) {
+                timerElement.innerText = "Ready to Harvest";
+                return;
+            }
+
+            // Calculate days, hours, minutes, and seconds
+            var days = Math.floor(seconds / (24 * 3600));
+            var hours = Math.floor((seconds % (24 * 3600)) / 3600);
+            var minutes = Math.floor((seconds % 3600) / 60);
+            var remainingSeconds = seconds % 60;
+
+            // Update display
+            timerElement.innerText =
+                `${days}d ${hours}h ${minutes}m ${remainingSeconds}s`;
+
+            // Decrement the seconds
+            seconds--;
+
+            // Set timeout for 1 second
+            setTimeout(updateCountdown, 1000);
+        }
+
+        updateCountdown(); // Start the countdown
+    }
+
+    // Initialize all countdowns on page load
+    document.addEventListener("DOMContentLoaded", function () {
+        @foreach (var item in Model)
+        {
+        <text>
+        startCountdown("timer-@item.CropId", @item.SecondsUntilHarvest);
+        </text>
+        }
+    });
+</script>
+}

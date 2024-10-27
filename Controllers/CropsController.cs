@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FarmTrack.Data;
 using FarmTrack.Models;
+using FarmTrack.ViewModels;
 
 namespace FarmTrack.Controllers
 {
@@ -22,9 +23,25 @@ namespace FarmTrack.Controllers
         // GET: Crops
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Crops.ToListAsync());
-        }
+            var crops = await _context.Crops
+                .Where(c => !c.Harvested) // Only include unharvested crops
+                .Select(c => new CropViewModel
+                {
+                    CropId = c.CropId,
+                    CropName = c.CropName,
+                    CropType = c.CropType,
+                    PlantingDate = c.PlantingDate,
+                    GrowthDurationInDays = c.GrowthDurationInDays,
+                    ExpectedHarvestDate = c.ExpectedHarvestDate,
+                    Harvested = c.Harvested,
+                    SecondsUntilHarvest = c.ExpectedHarvestDate.HasValue 
+                        ? (int)(c.ExpectedHarvestDate.Value - DateTime.Now).TotalSeconds 
+                        : 0 // If there's no ExpectedHarvestDate, default to 0
+                })
+                .ToListAsync();
 
+            return View(crops);
+        }
         // GET: Crops/Details/5
         public async Task<IActionResult> Details(int? id)
         {
