@@ -36,9 +36,19 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <th>
-                @Html.DisplayNameFor(modelItem => item.Harvested)
-            </th>
+                <td>
+                    @if (item.Harvested)
+                    {
+                        <span>Harvested</span>
+                    }
+                    else
+                    {
+                        <form asp-action="Harvest" method="post">
+                            <input type="hidden" name="id" value="@item.CropId" />
+                            <button type="submit" class="btn btn-primary">Harvest</button>
+                        </form>
+                    }
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CropName)
             </td>

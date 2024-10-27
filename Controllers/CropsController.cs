@@ -155,5 +155,24 @@ namespace FarmTrack.Controllers
         {
             return _context.Crops.Any(e => e.CropId == id);
         }
+
+        // Action to mark the crop as harvested and set the RealHarvestDate
+        [HttpPost]
+        public async Task<IActionResult> Harvest(int id)
+        {
+            var crop = await _context.Crops.FindAsync(id);
+            if (crop == null)
+            {
+                return NotFound();
+            }
+
+            crop.Harvested = true;
+            crop.HarvestDate = DateTime.Now;
+
+            _context.Update(crop);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

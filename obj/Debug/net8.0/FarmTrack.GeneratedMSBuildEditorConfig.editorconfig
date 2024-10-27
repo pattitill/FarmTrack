@@ -62,8 +62,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbnRpbmdcQWRkUGxhbnRpbmdEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Planting/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbnRpbmdcSGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Planting/OptimalPlantingResult.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbnRpbmdcT3B0aW1hbFBsYW50aW5nUmVzdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/ManageEmailList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXE1hbmFnZUVtYWlsTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/ManageEmailListPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXE1hbmFnZUVtYWlsTGlzdFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Shared/Error.cshtml]
