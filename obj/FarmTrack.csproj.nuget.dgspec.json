@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj": {}
+    "/Users/timalbert/RiderProjects/FarmTrack/FarmTrack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj": {
+    "/Users/timalbert/RiderProjects/FarmTrack/FarmTrack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj",
+        "projectUniqueName": "/Users/timalbert/RiderProjects/FarmTrack/FarmTrack.csproj",
         "projectName": "FarmTrack",
-        "projectPath": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj",
-        "packagesPath": "C:\\Users\\patti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\obj\\",
+        "projectPath": "/Users/timalbert/RiderProjects/FarmTrack/FarmTrack.csproj",
+        "packagesPath": "/Users/timalbert/.nuget/packages/",
+        "outputPath": "/Users/timalbert/RiderProjects/FarmTrack/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\patti\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/timalbert/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -84,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
