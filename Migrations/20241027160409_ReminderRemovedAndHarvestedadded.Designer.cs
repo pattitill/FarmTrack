@@ -3,6 +3,7 @@ using System;
 using FarmTrack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmTrack.Migrations
 {
     [DbContext(typeof(FarmTrackContext))]
-    partial class FarmTrackContextModelSnapshot : ModelSnapshot
+    [Migration("20241027160409_ReminderRemovedAndHarvestedadded")]
+    partial class ReminderRemovedAndHarvestedadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -38,9 +41,6 @@ namespace FarmTrack.Migrations
 
                     b.Property<int>("GrowthDurationInDays")
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("HarvestDate")
-                        .HasColumnType("TEXT");
 
                     b.Property<bool>("Harvested")
                         .HasColumnType("INTEGER");

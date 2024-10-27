@@ -38,36 +38,6 @@
                 <input asp-for="ExpectedHarvestDate" class="form-control" />
                 <span asp-validation-for="ExpectedHarvestDate" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RequiresFertilizing" /> @Html.DisplayNameFor(model => model.RequiresFertilizing)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="FertilizingReminder" class="control-label"></label>
-                <input asp-for="FertilizingReminder" class="form-control" />
-                <span asp-validation-for="FertilizingReminder" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RequiresWatering" /> @Html.DisplayNameFor(model => model.RequiresWatering)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="WateringReminder" class="control-label"></label>
-                <input asp-for="WateringReminder" class="form-control" />
-                <span asp-validation-for="WateringReminder" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RequiresPestControl" /> @Html.DisplayNameFor(model => model.RequiresPestControl)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="PestControlReminder" class="control-label"></label>
-                <input asp-for="PestControlReminder" class="form-control" />
-                <span asp-validation-for="PestControlReminder" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

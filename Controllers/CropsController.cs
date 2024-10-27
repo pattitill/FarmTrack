@@ -54,10 +54,11 @@ namespace FarmTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate,RequiresFertilizing,FertilizingReminder,RequiresWatering,WateringReminder,RequiresPestControl,PestControlReminder")] Crop crop)
+        public async Task<IActionResult> Create([Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate")] Crop crop)
         {
             if (ModelState.IsValid)
             {
+                crop.Harvested = false;
                 crop.CalculateHarvestDate();
                 _context.Add(crop);
                 await _context.SaveChangesAsync();
@@ -87,7 +88,7 @@ namespace FarmTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate,RequiresFertilizing,FertilizingReminder,RequiresWatering,WateringReminder,RequiresPestControl,PestControlReminder")] Crop crop)
+        public async Task<IActionResult> Edit(int id, [Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate")] Crop crop)
         {
             if (id != crop.CropId)
             {

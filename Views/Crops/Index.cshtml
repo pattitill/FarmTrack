@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Harvested)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.CropName)
             </th>
             <th>
@@ -27,30 +30,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.ExpectedHarvestDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RequiresFertilizing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FertilizingReminder)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RequiresWatering)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WateringReminder)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RequiresPestControl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PestControlReminder)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <th>
+                @Html.DisplayNameFor(modelItem => item.Harvested)
+            </th>
             <td>
                 @Html.DisplayFor(modelItem => item.CropName)
             </td>
@@ -65,24 +53,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ExpectedHarvestDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequiresFertilizing)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FertilizingReminder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequiresWatering)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WateringReminder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequiresPestControl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PestControlReminder)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CropId">Edit</a> |

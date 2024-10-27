@@ -32,18 +32,10 @@ namespace FarmTrack.Models
         [NotMapped]
         public int DaysUntilHarvest => (ExpectedHarvestDate.HasValue) ? (ExpectedHarvestDate.Value - DateTime.Now).Days : 0;  // Days remaining for the harvest
 
-        // Optional: Additional fields for tracking reminders and alerts (fertilizing, watering, pest control)
-        public bool RequiresFertilizing { get; set; }  // Is fertilizing required?
-        public DateTime? FertilizingReminder { get; set; }  // Reminder for fertilizing date
+        public Boolean Harvested { get; set; }
 
-        public bool RequiresWatering { get; set; }  // Is watering required?
-        public DateTime? WateringReminder { get; set; }  // Reminder for watering date
-
-        public bool RequiresPestControl { get; set; }  // Is pest control required?
-        public DateTime? PestControlReminder { get; set; }  // Reminder for pest control date
-
-        // Historical data (optional)
-        public List<GrowthHistory> GrowthHistories { get; set; } = new List<GrowthHistory>();
+        [DataType(DataType.Date)]
+        public DateTime? HarvestDate { get; set; }
 
         // Methods to calculate harvest date
         public void CalculateHarvestDate()
@@ -54,19 +46,11 @@ namespace FarmTrack.Models
             }
         }
 
-        // Alerts and notifications based on upcoming tasks (fertilizing, watering, pest control)
-        public bool IsFertilizingDue => FertilizingReminder.HasValue && FertilizingReminder.Value.Date == DateTime.Today;
-        public bool IsWateringDue => WateringReminder.HasValue && WateringReminder.Value.Date == DateTime.Today;
-        public bool IsPestControlDue => PestControlReminder.HasValue && PestControlReminder.Value.Date == DateTime.Today;
-    }
+        public void RealHarvestDate()
+        {
+            HarvestDate = DateTime.Now;
+        }
 
-    public class GrowthHistory
-    {
-        public int GrowthHistoryId { get; set; }
-        public DateTime RecordDate { get; set; }  // Date of logging the record
-        public string Notes { get; set; }  // Any notes regarding the crop’s progress
-        public int CropId { get; set; }
-        public Crop Crop { get; set; }
     }
 }
 
