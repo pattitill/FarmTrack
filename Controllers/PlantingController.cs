@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FarmTrack.Models;
 using FarmTrack.Services;
+using FarmTrack.Data; // Ensure to add this for the context
 
 namespace FarmTrack.Controllers
 {
     public class PlantingController : Controller
     {
         private readonly WeatherService _weatherService;
+        private readonly FarmTrackContext _context;
 
-        public PlantingController(WeatherService weatherService)
+        public PlantingController(WeatherService weatherService, FarmTrackContext context)
         {
             _weatherService = weatherService;
+            _context = context;
         }
 
         // GET: Display the form to add planting details
@@ -28,35 +32,49 @@ namespace FarmTrack.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Retrieve the location from the user input (model)
                 string location = model.Location;
 
-                // Call the WeatherService to get the current temperature for the location
                 double? currentTemperature = await _weatherService.GetTemperatureAsync(location);
 
                 if (currentTemperature.HasValue)
                 {
-                    // If current temperature is within 2 degrees of the preferred temperature, set planting to now
                     if (Math.Abs(currentTemperature.Value - model.PreferredTemperature) <= 2)
                     {
                         model.OptimalPlantingDate = DateTime.Now;
                     }
                     else
                     {
-                        // Otherwise, suggest a planting date 7 days later
                         model.OptimalPlantingDate = DateTime.Now.AddDays(7);
                     }
 
-                    // Return the result to a view that shows the optimal planting date
                     return View("OptimalPlantingResult", model);
                 }
                 else
                 {
-                    // Handle case where weather data could not be retrieved
                     ModelState.AddModelError("", "Unable to retrieve weather data. Please check the location and try again.");
                 }
             }
             return View(model);
+        }
+
+        // GET: Planting history of all crops
+        [HttpGet]
+        public IActionResult History()
+        {
+            var crops = _context.Crops
+                .Select(c => new 
+                {
+                    c.CropName,
+                    GrowthTime = c.ExpectedHarvestDate.HasValue 
+                        ? (c.ExpectedHarvestDate.Value - c.PlantingDate).TotalDays.ToString("0") + " days"
+                        : "N/A",
+                    Harvested = c.ExpectedHarvestDate.HasValue 
+                        ? c.ExpectedHarvestDate.Value.ToString("yyyy-MM-dd") 
+                        : "N/A"
+                })
+                .ToList();
+
+            return View(crops);
         }
     }
 }

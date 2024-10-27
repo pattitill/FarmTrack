@@ -1,0 +1,27 @@
+@model IEnumerable<dynamic>
+
+@{
+ViewData["Title"] = "Crop History";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Growth Time</th>
+        <th>Harvested</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var crop in Model)
+    {
+    <tr>
+        <td>@crop.CropName</td>
+        <td>@crop.GrowthTime</td>
+        <td>@crop.Harvested</td>
+    </tr>
+    }
+    </tbody>
+</table>
