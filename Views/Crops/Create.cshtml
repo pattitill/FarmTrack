@@ -12,11 +12,8 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Harvested" /> @Html.DisplayNameFor(model => model.Harvested)
-                </label>
-            </div>
+            <!-- Removed the Harvested and ExpectedHarvestDate inputs -->
+
             <div class="form-group">
                 <label asp-for="CropName" class="control-label"></label>
                 <input asp-for="CropName" class="form-control" />
@@ -37,11 +34,7 @@
                 <input asp-for="GrowthDurationInDays" class="form-control" />
                 <span asp-validation-for="GrowthDurationInDays" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ExpectedHarvestDate" class="control-label"></label>
-                <input asp-for="ExpectedHarvestDate" class="form-control" />
-                <span asp-validation-for="ExpectedHarvestDate" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -54,5 +47,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
