@@ -1,0 +1,43 @@
+@model FarmTrack.Models.EmailListViewModel
+
+@{
+    ViewData["Title"] = "Manage Email List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Back button to Reminders -->
+<a asp-controller="Reminders" asp-action="Index" class="btn btn-secondary">Back to Reminders</a>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Email Address</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var email in Model.EmailAddresses)
+    {
+        <tr>
+            <td>@email.EmailAddress</td>
+            <td>
+                <form asp-action="DeleteEmail" method="post">
+                    <input type="hidden" name="emailId" value="@email.EmailListId" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h3>Add Email Address</h3>
+<form asp-action="AddEmail" method="post">
+    <div class="form-group">
+        <label for="NewEmail">Email Address</label>
+        <input asp-for="NewEmail" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Email</button>
+</form>

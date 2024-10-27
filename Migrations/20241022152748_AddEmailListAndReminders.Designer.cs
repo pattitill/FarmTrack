@@ -3,6 +3,7 @@ using System;
 using FarmTrack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmTrack.Migrations
 {
     [DbContext(typeof(FarmTrackContext))]
-    partial class FarmTrackContextModelSnapshot : ModelSnapshot
+    [Migration("20241022152748_AddEmailListAndReminders")]
+    partial class AddEmailListAndReminders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -110,10 +113,8 @@ namespace FarmTrack.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("CropName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CropId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("NotificationSent")
                         .HasColumnType("TEXT");
@@ -128,6 +129,8 @@ namespace FarmTrack.Migrations
 
                     b.HasKey("ReminderId");
 
+                    b.HasIndex("CropId");
+
                     b.ToTable("Reminders");
                 });
 
@@ -135,6 +138,17 @@ namespace FarmTrack.Migrations
                 {
                     b.HasOne("FarmTrack.Models.Crop", "Crop")
                         .WithMany("GrowthHistories")
+                        .HasForeignKey("CropId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Crop");
+                });
+
+            modelBuilder.Entity("FarmTrack.Models.Reminder", b =>
+                {
+                    b.HasOne("FarmTrack.Models.Crop", "Crop")
+                        .WithMany()
                         .HasForeignKey("CropId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

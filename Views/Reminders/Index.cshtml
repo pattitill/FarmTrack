@@ -1,0 +1,37 @@
+@model IEnumerable<FarmTrack.Models.Reminder>
+
+@{
+ViewData["Title"] = "Reminders";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-action="Create" class="btn btn-primary">Create Reminder</a>
+<a asp-action="ManageEmailList" class="btn btn-secondary">Manage Email List</a>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Reminder Time</th>
+        <th>Crop</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var reminder in Model)
+    {
+    <tr>
+        <td>@reminder.ReminderType</td>
+        <td>@reminder.ReminderTime</td>
+        <td>@reminder.CropName</td>
+        <td>
+            <form asp-action="DeleteReminder" method="post">
+                <input type="hidden" name="reminderId" value="@reminder.ReminderId" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>

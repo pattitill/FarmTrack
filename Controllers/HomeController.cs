@@ -23,7 +23,7 @@ namespace FarmTrack.Controllers
         // GET: Privacy page that requires password every time
         public IActionResult Privacy()
         {
-            return RedirectToAction("PrivacyPassword");
+            return View();
         }
 
         // GET: Password entry form

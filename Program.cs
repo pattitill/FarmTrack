@@ -1,19 +1,30 @@
-using FarmTrack.Data;  // Namespace for your DbContext
-using FarmTrack.Services;  // Namespace for your WeatherService
+using FarmTrack.Data;            // Namespace for DbContext
+using FarmTrack.Services;        // Namespace for WeatherService and ReminderNotificationService
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext and the connection to the SQLite database
+// Add DbContext and configure SQLite database connection
 builder.Services.AddDbContext<FarmTrackContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));  // Use SQLite instead of SQL Server
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add WeatherService with HttpClient to enable external API calls
+// Register WeatherService with HttpClient for external API calls
 builder.Services.AddHttpClient<WeatherService>();
-builder.Services.AddSingleton<WeatherService>();
 
-// Add services to the container
+// Register ReminderNotificationService as a background (hosted) service
+builder.Services.AddHostedService<ReminderNotificationService>();
+
+// Add controllers with views
 builder.Services.AddControllersWithViews();
+
+// Add session support with a 1-minute timeout
+builder.Services.AddHttpContextAccessor(); // To access session in controllers
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(1); // Set session timeout to 1 minute
+    options.Cookie.HttpOnly = true; // Enhance security
+    options.Cookie.IsEssential = true; // Ensure session works even if tracking is disabled
+});
 
 var app = builder.Build();
 
@@ -21,7 +32,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();  // The default HSTS value is 30 days. You may want to change this for production scenarios.
+    app.UseHsts(); // The default HSTS value is 30 days.
 }
 
 app.UseHttpsRedirection();
@@ -29,11 +40,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Authentication & Authorization Middleware (optional if you plan to add authentication)
+// Uncomment if using authentication/authorization in the future
 // app.UseAuthentication();
 app.UseAuthorization();
 
-// MVC route configuration
+// Use session middleware
+app.UseSession(); // Enables session management
+
+// Configure MVC route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
