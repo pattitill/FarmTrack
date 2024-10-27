@@ -62,14 +62,18 @@ namespace FarmTrack.Controllers
         public IActionResult History()
         {
             var crops = _context.Crops
+                .Where(c => c.Harvested) // Filter to include only harvested crops
                 .Select(c => new 
                 {
                     c.CropName,
-                    GrowthTime = c.ExpectedHarvestDate.HasValue 
-                        ? (c.ExpectedHarvestDate.Value - c.PlantingDate).TotalDays.ToString("0") + " days"
+                    c.CropType, // Added CropType
+                    c.PlantingDate,
+                    c.ExpectedHarvestDate,
+                    ActualGrowthTime = c.HarvestDate.HasValue 
+                        ? (c.HarvestDate.Value - c.PlantingDate).TotalDays.ToString("0") + " days"
                         : "N/A",
-                    Harvested = c.ExpectedHarvestDate.HasValue 
-                        ? c.ExpectedHarvestDate.Value.ToString("yyyy-MM-dd") 
+                    ActualHarvestDate = c.HarvestDate.HasValue 
+                        ? c.HarvestDate.Value.ToString("yyyy-MM-dd") 
                         : "N/A"
                 })
                 .ToList();

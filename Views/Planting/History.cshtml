@@ -1,7 +1,7 @@
 @model IEnumerable<dynamic>
 
 @{
-ViewData["Title"] = "Crop History";
+    ViewData["Title"] = "Harvested Crop History";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -9,19 +9,25 @@ ViewData["Title"] = "Crop History";
 <table class="table">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Growth Time</th>
-        <th>Harvested</th>
+        <th>Crop Name</th>
+        <th>Crop Type</th> <!-- Added Crop Type column -->
+        <th>Planting Date</th>
+        <th>Expected Harvest Date</th>
+        <th>Actual Growth Time</th>
+        <th>Actual Harvest Date</th>
     </tr>
     </thead>
     <tbody>
     @foreach (var crop in Model)
     {
-    <tr>
-        <td>@crop.CropName</td>
-        <td>@crop.GrowthTime</td>
-        <td>@crop.Harvested</td>
-    </tr>
+        <tr>
+            <td>@crop.CropName</td>
+            <td>@crop.CropType</td> <!-- Display Crop Type here -->
+            <td>@crop.PlantingDate.ToString("yyyy-MM-dd")</td>
+            <td>@crop.ExpectedHarvestDate?.ToString("yyyy-MM-dd") ?? "N/A"</td>
+            <td>@crop.ActualGrowthTime</td>
+            <td>@crop.ActualHarvestDate</td>
+        </tr>
     }
     </tbody>
 </table>

@@ -20,4 +20,8 @@
       <Folder Include="Migrations\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="obj\Debug\net8.0\apphost" />
+    </ItemGroup>
+
 </Project>
