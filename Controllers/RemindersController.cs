@@ -82,7 +82,7 @@ namespace FarmTrack.Controllers
             }
         }
 
-        // GET: ManageEmailList (access restricted)
+        // GET: ManageEmailList (access restricted) with password
         public IActionResult ManageEmailList()
         {
             // Check session variable to confirm authentication

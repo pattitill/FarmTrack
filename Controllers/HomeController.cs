@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FarmTrack.Models;
 using Microsoft.AspNetCore.Mvc;
-using FarmTrack.Models;
+using FarmTrack.Models; 
 
 namespace FarmTrack.Controllers
 {
