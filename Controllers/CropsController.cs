@@ -67,8 +67,6 @@ namespace FarmTrack.Controllers
         }
 
         // POST: Crops/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate")] Crop crop)
@@ -84,7 +82,7 @@ namespace FarmTrack.Controllers
             return View(crop);
         }
 
-        // GET: Crops/Edit/5
+        // GET: Crops/Edit/()
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -100,9 +98,7 @@ namespace FarmTrack.Controllers
             return View(crop);
         }
 
-        // POST: Crops/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Crops/Edit/()
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CropId,CropName,CropType,PlantingDate,GrowthDurationInDays,ExpectedHarvestDate")] Crop crop)
@@ -135,7 +131,7 @@ namespace FarmTrack.Controllers
             return View(crop);
         }
 
-        // GET: Crops/Delete/5
+        // GET: Crops/Delete/()
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -153,7 +149,7 @@ namespace FarmTrack.Controllers
             return View(crop);
         }
 
-        // POST: Crops/Delete/5
+        // POST: Crops/Delete/()
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

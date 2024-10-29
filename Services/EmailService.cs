@@ -11,7 +11,7 @@ namespace FarmTrack.Services
         {
             using (var smtp = new SmtpClient("smtp.gmail.com", 587))
             {
-                smtp.Credentials = new NetworkCredential("farmtrackreminder@gmail.com", "idwzgdsfqfmpvkcw"); // Use your app password
+                smtp.Credentials = new NetworkCredential("farmtrackreminder@gmail.com", "idwzgdsfqfmpvkcw"); // Password for my email account (please keep private)
                 smtp.EnableSsl = true;
 
                 var mailMessage = new MailMessage("farmtrackreminder@gmail.com", toEmail, subject, message);
