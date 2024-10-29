@@ -17,91 +17,91 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FarmTrack
 build_property.RootNamespace = FarmTrack
-build_property.ProjectDir = /Users/timalbert/RiderProjects/FarmTrack/
+build_property.ProjectDir = C:\Users\patti\source\repos\pattitill\FarmTrack\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/timalbert/RiderProjects/FarmTrack
+build_property.MSBuildProjectDirectory = C:\Users\patti\source\repos\pattitill\FarmTrack
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Crops/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JvcHMvQ3JlYXRlLmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Crops/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JvcHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Crops/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JvcHMvRGVsZXRlLmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Crops/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JvcHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Crops/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JvcHMvRGV0YWlscy5jc2h0bWw=
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Crops/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JvcHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Crops/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JvcHMvRWRpdC5jc2h0bWw=
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Crops/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JvcHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Crops/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JvcHMvSW5kZXguY3NodG1s
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Crops/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JvcHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Home/PrivacyPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5UGFzc3dvcmQuY3NodG1s
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Home/PrivacyPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Planting/AddPlantingDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhbnRpbmcvQWRkUGxhbnRpbmdEZXRhaWxzLmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Planting/AddPlantingDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbnRpbmdcQWRkUGxhbnRpbmdEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Planting/History.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhbnRpbmcvSGlzdG9yeS5jc2h0bWw=
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Planting/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbnRpbmdcSGlzdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Planting/OptimalPlantingResult.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhbnRpbmcvT3B0aW1hbFBsYW50aW5nUmVzdWx0LmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Planting/OptimalPlantingResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbnRpbmdcT3B0aW1hbFBsYW50aW5nUmVzdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Reminders/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVtaW5kZXJzL0NyZWF0ZS5jc2h0bWw=
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Reminders/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVtaW5kZXJzL0luZGV4LmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Reminders/ManageEmailList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVtaW5kZXJzL01hbmFnZUVtYWlsTGlzdC5jc2h0bWw=
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/ManageEmailList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXE1hbmFnZUVtYWlsTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Reminders/ManageEmailListPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVtaW5kZXJzL01hbmFnZUVtYWlsTGlzdFBhc3N3b3JkLmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Reminders/ManageEmailListPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtaW5kZXJzXE1hbmFnZUVtYWlsTGlzdFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/timalbert/RiderProjects/FarmTrack/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-iov54rqwe5
+[C:/Users/patti/source/repos/pattitill/FarmTrack/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-sa41cit9rq
