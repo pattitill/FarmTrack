@@ -35,10 +35,5 @@ namespace FarmTrack.Services
 
             return null;  // Return null if the API call fails
         }
-
-        public int bug()
-        {
-            return 0;
-        }
     }
 }
