@@ -1,55 +1,54 @@
 using FarmTrack.Data;            // Namespace for DbContext
-using FarmTrack.Services;        // Namespace for WeatherService and ReminderNotificationService
+using Microsoft.AspNetCore.Identity; // For Identity services
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection; 
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext and configure SQLite database connection
+// Configure DbContext with SQLite
 builder.Services.AddDbContext<FarmTrackContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register WeatherService with HttpClient for external API calls
-builder.Services.AddHttpClient<WeatherService>();
-
-// Register ReminderNotificationService as a background (hosted) service
-builder.Services.AddHostedService<ReminderNotificationService>();
+// Add Identity services
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+    {
+        options.Password.RequireDigit = true;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequiredLength = 6;
+        options.Password.RequireNonAlphanumeric = false;
+    })
+    .AddEntityFrameworkStores<FarmTrackContext>()
+    .AddDefaultTokenProviders();
 
 // Add controllers with views
 builder.Services.AddControllersWithViews();
 
-// Add session support with a 1-minute timeout
-builder.Services.AddHttpContextAccessor(); // To access session in controllers
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromMinutes(1); // Set session timeout to 1 minute
-    options.Cookie.HttpOnly = true; // Enhance security
-    options.Cookie.IsEssential = true; // Ensure session works even if tracking is disabled
-});
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// Configure HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts(); // The default HSTS value is 30 days.
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication(); // Enable authentication middleware
+app.UseAuthorization();  // Enforce authorization rules
 
-// Uncomment if using authentication/authorization in the future
-// app.UseAuthentication();
+
+// Authentication and Authorization middleware
+app.UseAuthentication();
 app.UseAuthorization();
 
-// Use session middleware
-app.UseSession(); // Enables session management
-
-// Configure MVC route
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
+
 
 app.Run();

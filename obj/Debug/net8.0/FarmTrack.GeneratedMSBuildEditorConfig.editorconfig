@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/timalbert/RiderProjects/FarmTrack
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/timalbert/RiderProjects/FarmTrack/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/timalbert/RiderProjects/FarmTrack/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/timalbert/RiderProjects/FarmTrack/Views/Crops/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JvcHMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
