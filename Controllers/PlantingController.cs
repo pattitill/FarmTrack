@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using FarmTrack.Models;
 using FarmTrack.Services;
-using FarmTrack.Data; // Ensure to add this for the context
+using FarmTrack.Data; 
 
 namespace FarmTrack.Controllers
 {

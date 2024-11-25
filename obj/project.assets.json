@@ -8279,24 +8279,27 @@
     ]
   },
   "packageFolders": {
-    "/Users/timalbert/.nuget/packages/": {}
+    "C:\\Users\\patti\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/timalbert/RiderProjects/FarmTrack/FarmTrack.csproj",
+      "projectUniqueName": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj",
       "projectName": "FarmTrack",
-      "projectPath": "/Users/timalbert/RiderProjects/FarmTrack/FarmTrack.csproj",
-      "packagesPath": "/Users/timalbert/.nuget/packages/",
-      "outputPath": "/Users/timalbert/RiderProjects/FarmTrack/obj/",
+      "projectPath": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj",
+      "packagesPath": "C:\\Users\\patti\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\patti\\Source\\Repos\\pattitill\\FarmTrack\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/timalbert/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\patti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8372,7 +8375,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
