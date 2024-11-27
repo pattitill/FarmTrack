@@ -1,8 +1,8 @@
-using FarmTrack.Data;            // Namespace for DbContext
+using FarmTrack.Data;
+using FarmTrack.Services; // Namespace for DbContext
 using Microsoft.AspNetCore.Identity; // For Identity services
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection; 
-
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +22,18 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     .AddEntityFrameworkStores<FarmTrackContext>()
     .AddDefaultTokenProviders();
 
+// Add session services to the container
+builder.Services.AddDistributedMemoryCache(); // Use memory cache for sessions
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set session timeout (optional)
+    options.Cookie.HttpOnly = true; // Cookie settings
+    options.Cookie.IsEssential = true; // Make the cookie essential for the app
+});
+
+builder.Services.AddHttpClient<WeatherService>();
+
+
 // Add controllers with views
 builder.Services.AddControllersWithViews();
 
@@ -38,17 +50,19 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication(); // Enable authentication middleware
-app.UseAuthorization();  // Enforce authorization rules
 
+// Add session middleware to the request pipeline
+app.UseSession(); // Ensure session middleware is used before UseAuthentication
 
-// Authentication and Authorization middleware
+// Enable authentication middleware
 app.UseAuthentication();
+
+// Enforce authorization rules
 app.UseAuthorization();
 
+// Define default controller route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
-
 
 app.Run();

@@ -8284,11 +8284,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj",
+      "projectUniqueName": "C:\\Users\\patti\\RiderProjects\\FarmTrack\\FarmTrack.csproj",
       "projectName": "FarmTrack",
-      "projectPath": "C:\\Users\\patti\\source\\repos\\pattitill\\FarmTrack\\FarmTrack.csproj",
+      "projectPath": "C:\\Users\\patti\\RiderProjects\\FarmTrack\\FarmTrack.csproj",
       "packagesPath": "C:\\Users\\patti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\patti\\Source\\Repos\\pattitill\\FarmTrack\\obj\\",
+      "outputPath": "C:\\Users\\patti\\RiderProjects\\FarmTrack\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\patti\\AppData\\Roaming\\NuGet\\NuGet.Config",

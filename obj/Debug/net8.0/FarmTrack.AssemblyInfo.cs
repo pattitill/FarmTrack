@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FarmTrack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3bb672c158f8f5c294b3d553286f8d0902fda374")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c0dab05d0a083a93cbd5e4dfca29e9cfa989ca25")]
 [assembly: System.Reflection.AssemblyProductAttribute("FarmTrack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FarmTrack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

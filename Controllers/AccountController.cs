@@ -27,21 +27,34 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
+        Console.WriteLine("1.Method begins");
         if (ModelState.IsValid)
         {
+            Console.WriteLine("2.Model state is valid");
             var result = await _signInManager.PasswordSignInAsync(
                 model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
 
             if (result.Succeeded)
             {
+                Console.WriteLine("3.Result succeeded logged in.");
                 HttpContext.Session.SetString("IsLoggedIn", "true");
                 return RedirectToAction("Index", "Home");
             }
 
+            Console.WriteLine("2.5 Something failed");
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
         }
 
+        Console.WriteLine("4.Login method is finished but failed");
         return View(model);
+    }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Login", "Account");
     }
     
     [HttpGet]
@@ -56,24 +69,43 @@ public class AccountController : Controller
     [AllowAnonymous]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
-        if (ModelState.IsValid)
+        Console.WriteLine("Entering Register method.");
+
+        if (!ModelState.IsValid)
         {
-            var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
+            Console.WriteLine("ModelState is invalid.");
+            // Iterate through ModelState to log each error
+            foreach (var key in ModelState.Keys)
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
+                var errors = ModelState[key].Errors;
+                foreach (var error in errors)
+                {
+                    Console.WriteLine($"Key: {key}, Error: {error.ErrorMessage}");
+                }
             }
+            return View(model); // Return early if validation fails
+        }
 
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
+        Console.WriteLine("ModelState is valid.");
+        var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+        var result = await _userManager.CreateAsync(user, model.Password);
+
+        if (result.Succeeded)
+        {
+            Console.WriteLine("User created successfully.");
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            return RedirectToAction("Index", "Home");
+        }
+
+        Console.WriteLine("User creation failed.");
+        foreach (var error in result.Errors)
+        {
+            Console.WriteLine($"Error: {error.Code} - {error.Description}");
+            ModelState.AddModelError(string.Empty, error.Description);
         }
 
         return View(model);
     }
+
 
 }
